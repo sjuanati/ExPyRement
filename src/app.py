@@ -2,6 +2,7 @@ import sys
 from routes.routes import f1, f2
 from exercices.conditionals import test as test1
 from exercices.listAndRandom import test as test2
+from exercices.loopsAndRange import test as test3
 
 
 def main():
@@ -15,7 +16,7 @@ def main():
             f1()
             f2()
     else:
-        test2()
+        test3()
 
 
 main()
