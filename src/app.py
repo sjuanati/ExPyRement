@@ -6,6 +6,7 @@ from exercices.loopsAndRange import test as test3
 from exercices.hangman import test as test4
 from exercices.encrypt import test as test5
 from exercices.dictionaries import test as test6
+from exercices.calculator import test as test7
 
 
 def main():
@@ -19,7 +20,7 @@ def main():
             f1()
             f2()
     else:
-        test6()
+        test7()
 
 
 main()
