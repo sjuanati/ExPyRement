@@ -7,6 +7,9 @@ from exercices.hangman import test as test4
 from exercices.encrypt import test as test5
 from exercices.dictionaries import test as test6
 from exercices.calculator import test as test7
+from exercices.blackjack import test as test8
+from exercices.guess import test as test9
+from exercices.oop import test as test10
 
 
 def main():
@@ -20,7 +23,7 @@ def main():
             f1()
             f2()
     else:
-        test7()
+        test10()
 
 
 main()
