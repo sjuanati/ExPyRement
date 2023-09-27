@@ -10,6 +10,7 @@ from exercices.calculator import test as test7
 from exercices.blackjack import test as test8
 from exercices.guess import test as test9
 from exercices.coffee_machine.main import coffee as test10
+from exercices.quiz.main import quiz as test11
 
 
 def main():
@@ -23,7 +24,7 @@ def main():
             f1()
             f2()
     else:
-        test10()
+        test11()
 
 
 main()
