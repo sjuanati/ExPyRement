@@ -9,7 +9,7 @@ from exercices.dictionaries import test as test6
 from exercices.calculator import test as test7
 from exercices.blackjack import test as test8
 from exercices.guess import test as test9
-from exercices.oop import test as test10
+from exercices.coffee_machine.main import coffee as test10
 
 
 def main():
