@@ -1,6 +1,6 @@
-from exercices.coffee_machine.menu import Menu, MenuItem
-from exercices.coffee_machine.coffee_maker import CoffeeMaker
-from exercices.coffee_machine.money_machine import MoneyMachine
+from v1.coffee_machine.menu import Menu, MenuItem
+from v1.coffee_machine.coffee_maker import CoffeeMaker
+from v1.coffee_machine.money_machine import MoneyMachine
 
 # 1: Print Report
 # 2: Check and see if resources are sufficient

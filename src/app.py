@@ -1,20 +1,20 @@
 import sys
 from routes.routes import f1, f2
-from exercices.conditionals import test as test1
-from exercices.listAndRandom import test as test2
-from exercices.loopsAndRange import test as test3
-from exercices.hangman import test as test4
-from exercices.encrypt import test as test5
-from exercices.dictionaries import test as test6
-from exercices.calculator import test as test7
-from exercices.blackjack import test as test8
-from exercices.guess import test as test9
-from exercices.coffee_machine.main import coffee as test10
-from exercices.quiz.main import quiz as test11
-from exercices.gui import test as test12
-from exercices.hirst.main import test as test13
-from exercices.listener import test as test14
-from exercices.race import test as test15
+from v1.conditionals import test as test1
+from v1.listAndRandom import test as test2
+from v1.loopsAndRange import test as test3
+from v1.hangman import test as test4
+from v1.encrypt import test as test5
+from v1.dictionaries import test as test6
+from v1.calculator import test as test7
+from v1.blackjack import test as test8
+from v1.guess import test as test9
+from v1.coffee_machine.main import coffee as test10
+from v1.quiz.main import quiz as test11
+from v1.gui import test as test12
+from v1.hirst.main import test as test13
+from v1.listener import test as test14
+from v1.race import test as test15
 
 
 

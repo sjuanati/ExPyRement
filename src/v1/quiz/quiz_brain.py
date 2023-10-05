@@ -2,7 +2,7 @@
 # check if the answer is correct
 # check if we are at the end of the quiz
 
-from exercices.quiz.question_model import Question
+from v1.quiz.question_model import Question
 
 
 class QuizBrain:

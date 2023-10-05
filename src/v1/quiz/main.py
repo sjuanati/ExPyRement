@@ -1,6 +1,6 @@
-from exercices.quiz.data import question_data
-from exercices.quiz.question_model import Question
-from exercices.quiz.quiz_brain import QuizBrain
+from v1.quiz.data import question_data
+from v1.quiz.question_model import Question
+from v1.quiz.quiz_brain import QuizBrain
 
 
 def quiz():
