@@ -13,6 +13,9 @@ from exercices.coffee_machine.main import coffee as test10
 from exercices.quiz.main import quiz as test11
 from exercices.gui import test as test12
 from exercices.hirst.main import test as test13
+from exercices.listener import test as test14
+from exercices.race import test as test15
+
 
 
 def main():
@@ -26,7 +29,8 @@ def main():
             f1()
             f2()
     else:
-        test13()
+        test15()
+        print('eps')
 
 
 main()
