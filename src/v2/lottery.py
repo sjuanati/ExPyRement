@@ -13,7 +13,8 @@ def test():
     ]
     # WRONG!! any repeated number will be removed
     # lottery_numbers = {random.randint(1, 22) for _ in range(6)}
-    lottery_numbers = set(random.sample(range(1, 23), 6))
+    # CORRECT: 6 unique integers from 1 to 22
+    lottery_numbers = set(random.sample(range(1, 23), k=6))
 
     # start assuming 1st player is the current winner
     top_player = players[0]
