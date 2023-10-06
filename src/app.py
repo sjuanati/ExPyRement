@@ -1,5 +1,6 @@
 import sys
 from routes.routes import f1, f2
+
 # v1
 from v1.conditionals import test as test1
 from v1.listAndRandom import test as test2
@@ -16,8 +17,9 @@ from v1.gui import test as test12
 from v1.hirst.main import test as test13
 from v1.listener import test as test14
 from v1.race import test as test15
-# v2
 
+# v2
+from v2.lottery import test as test16
 
 def main():
     params = sys.argv[1:]
@@ -30,8 +32,7 @@ def main():
             f1()
             f2()
     else:
-        test15()
-        print('eps')
+        test16()
 
 
 main()
