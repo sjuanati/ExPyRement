@@ -2,13 +2,19 @@ import random
 from turtle import Turtle, Screen
 
 
-s = Screen()
-s.setup(width=500, height=400)
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]
 speeds = [random.randint(1, 10) for _ in range(6)]
 distances = [0] * len(colors)
 turtles = []
 END_DISTANCE = 450
+
+s = None
+
+
+def setup_screen():
+    global s
+    s = Screen()
+    s.setup(width=500, height=400)
 
 
 def create_turtles():
@@ -41,7 +47,7 @@ def check_winner(user_bet, color_winner):
 
 
 def test():
-    s.setup(width=500, height=400)
+    setup_screen()
     user_bet = s.textinput(title="guess", prompt="who is going to win?")
     create_turtles()
     start_race(user_bet)
