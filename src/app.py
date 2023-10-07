@@ -20,6 +20,7 @@ from v1.race import test as test15
 
 # v2
 from v2.lottery import test as test16
+from v2.movies import test as test17
 
 def main():
     params = sys.argv[1:]
@@ -32,7 +33,7 @@ def main():
             f1()
             f2()
     else:
-        test16()
+        test17()
 
 
 main()
