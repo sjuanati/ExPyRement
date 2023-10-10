@@ -17,7 +17,7 @@ def set_position(t: Turtle, y: int):
 def get_colors_from_image():
     print(os.getcwd())  # show current path
     rgb_colors = []
-    colors = colorgram.extract("src/exercices/hirst/image.jpg", 30)
+    colors = colorgram.extract("src/v1/hirst/image.jpg", 30)
     for color in colors:
         r = color.rgb.r
         g = color.rgb.g
