@@ -1,7 +1,6 @@
-from v2.books.utils.file_storage import FileStorage
 from v2.books.utils.base_storage import BaseStorage
-
-BOOK_FILE = "src/v2/books/data/books.csv"
+from v2.books.utils.file_storage import FileStorage
+from v2.books.utils.list_storage import ListStorage
 
 
 class StorageFactory:
@@ -9,8 +8,8 @@ class StorageFactory:
     def get_storage(storage_type: str) -> BaseStorage:
         if storage_type == "file":
             return FileStorage()
-        # elif storage_type == 'list':
-        #     return ListStorage()
+        elif storage_type == "list":
+            return ListStorage()
         # elif storage_type == 'db':
         #     return DBStorage()
         else:
@@ -20,7 +19,7 @@ class StorageFactory:
 class BookManager:
     def __init__(self, storage_type: str = "file"):
         self.storage = StorageFactory.get_storage(storage_type)
-        self.data_storage = storage_type
+        self.storage_type = storage_type
 
     @property
     def get_user_choice(self) -> str:
@@ -30,7 +29,7 @@ class BookManager:
         - 'l' to list all books
         - 'r' to mark a book as read
         - 'd' to delete a book
-        - 's' to change data storage ({self.data_storage})
+        - 's' to change data storage ({self.storage_type})
         - 'q' to quit
 
         Your choice: """
@@ -52,11 +51,12 @@ class BookManager:
         self.storage.delete_book(name)
 
     def prompt_storage(self) -> None:
-        new_storage = input("Enter data storage (list,file,db): ")
-        if new_storage not in ["list", "file", "db"]:
+        new_storage_type = input("Enter data storage (list,file,db): ")
+        if new_storage_type not in ["list", "file", "db"]:
             print("Unknown storage")
         else:
-            self.storage = StorageFactory.get_storage(new_storage)
+            self.storage = StorageFactory.get_storage(new_storage_type)
+            self.storage_type = new_storage_type
 
     def menu(self) -> None:
         user_options = {
@@ -77,5 +77,5 @@ class BookManager:
 
 
 def test():
-    manager = BookManager("file")  # Default to file storage
+    manager = BookManager("list")  # Default to file storage
     manager.menu()
