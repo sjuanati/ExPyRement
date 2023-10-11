@@ -23,6 +23,7 @@ from v2.lottery import test as test16
 from v2.movies import test as test17
 from v2.oop import test as test18
 from v2.filez.main import test as test19
+from v2.books.app import test as test20
 
 def main():
     params = sys.argv[1:]
@@ -35,7 +36,7 @@ def main():
             f1()
             f2()
     else:
-        test19()
+        test20()
 
 
 main()
