@@ -1,6 +1,7 @@
 from v2.books.utils.base_storage import BaseStorage
 from v2.books.utils.file_storage import FileStorage
 from v2.books.utils.list_storage import ListStorage
+from v2.books.utils.db_storage import DatabaseStorage
 
 
 class StorageFactory:
@@ -10,8 +11,8 @@ class StorageFactory:
             return FileStorage()
         elif storage_type == "list":
             return ListStorage()
-        # elif storage_type == 'db':
-        #     return DBStorage()
+        elif storage_type == "db":
+            return DatabaseStorage()
         else:
             raise ValueError(f"Unknown storage type: {storage_type}")
 
@@ -77,5 +78,5 @@ class BookManager:
 
 
 def test():
-    manager = BookManager("list")  # Default to file storage
+    manager = BookManager("db")  # Default
     manager.menu()
