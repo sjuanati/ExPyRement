@@ -2,11 +2,11 @@ from v2.books.utils.base_storage import BaseStorage
 
 
 class ListStorage(BaseStorage):
-    def __init__(self) -> None:
+    def __init__(self):
         self.books = []
         super().__init__()
 
-    def add_book(self, name, author):
+    def add_book(self, name: str, author: str):
         if name in [book["name"] for book in self.books]:
             print(f"The book {name} already exists")
             return
@@ -24,12 +24,12 @@ class ListStorage(BaseStorage):
             is_read = "read" if book["read"] else "not read"
             print(f'{book["name"]} by {book["author"]}, {is_read}')
 
-    def mark_book_as_read(self, name):
+    def mark_book_as_read(self, name: str):
         for book in self.books:
             if book["name"] == name:
                 book["read"] = True
                 return
         print(f"Book {name} not found")
 
-    def delete_book(self, name):
+    def delete_book(self, name: str):
         self.books = [book for book in self.books if book["name"] != name]

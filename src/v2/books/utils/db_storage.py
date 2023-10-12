@@ -1,14 +1,17 @@
 import sqlite3
+from typing import Any, Tuple
 from v2.books.utils.base_storage import BaseStorage
 
 
 class DatabaseStorage(BaseStorage):
-    def __init__(self) -> None:
+    def __init__(self):
         self.database = "data.db"
         self.create_book_table()
         super().__init__()
 
-    def _execute_query(self, query, parameters=()):
+    def _execute_query(
+        self, query: str, parameters: Tuple[Any, ...] = ()
+    ) -> sqlite3.Cursor:
         # The key aspect of the with statement is that it ensures the __enter__ method is called
         # when entering the block and __exit__ is called when exiting the block.
         # For the sqlite3.connect() function, the __exit__ method handles closing the connection.
@@ -23,7 +26,7 @@ class DatabaseStorage(BaseStorage):
             "CREATE TABLE IF NOT EXISTS books(name text primary key, author text, read integer)"
         )
 
-    def add_book(self, name, author):
+    def add_book(self, name: str, author: str):
         # don't do this to prevent sql injection attacks
         # self._execute_query(f'INSERT INTO books VALUES("{name}","{author}",0)')
         try:
@@ -47,7 +50,7 @@ class DatabaseStorage(BaseStorage):
             is_read = "read" if book["read"] else "not read"
             print(f'{book["name"]} by {book["author"]}, {is_read}')
 
-    def mark_book_as_read(self, name):
+    def mark_book_as_read(self, name: str):
         self._execute_query("UPDATE books SET read = 1 WHERE name = ?", (name,))
 
     def delete_book(self, name):

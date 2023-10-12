@@ -5,7 +5,7 @@ BOOK_FILE = "src/v2/books/data/books.csv"
 
 
 class FileStorage(BaseStorage):
-    def add_book(self, name, author):
+    def add_book(self, name: str, author: str):
         # Check if the book already exists in the db
         with open(BOOK_FILE, "r") as file:
             if any(f"{name},{author}" in line for line in file):
@@ -25,12 +25,12 @@ class FileStorage(BaseStorage):
             is_read = "read" if row["read"] else "not read"
             print(f'{row["name"]} by {row["author"]}, {is_read}')
 
-    def mark_book_as_read(self, name):
+    def mark_book_as_read(self, name: str):
         df = pd.read_csv(BOOK_FILE)
         df.loc[df["name"] == name, "read"] = True
         df.to_csv(BOOK_FILE, index=False)
 
-    def delete_book(self, name):
+    def delete_book(self, name: str):
         df = pd.read_csv(BOOK_FILE)
         initial_len = len(df)
         df = df[df["name"] != name]
