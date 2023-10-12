@@ -1,5 +1,5 @@
 import pandas as pd
-from v2.books.utils.base_storage import BaseStorage
+from v2.books.managers.base_storage import BaseStorage
 
 BOOK_FILE = "src/v2/books/data/books.csv"
 

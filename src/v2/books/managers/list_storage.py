@@ -1,4 +1,4 @@
-from v2.books.utils.base_storage import BaseStorage
+from v2.books.managers.base_storage import BaseStorage
 
 
 class ListStorage(BaseStorage):
@@ -32,4 +32,7 @@ class ListStorage(BaseStorage):
         print(f"Book {name} not found")
 
     def delete_book(self, name: str):
-        self.books = [book for book in self.books if book["name"] != name]
+        if name in [book["name"] for book in self.books]:
+            self.books = [book for book in self.books if book["name"] != name]
+        else:
+            print(f"Book {name} not found")

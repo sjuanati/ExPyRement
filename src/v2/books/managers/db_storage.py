@@ -1,6 +1,6 @@
 import sqlite3
 from typing import Any, Tuple
-from v2.books.utils.base_storage import BaseStorage
+from v2.books.managers.base_storage import BaseStorage
 
 
 class DatabaseStorage(BaseStorage):
@@ -51,7 +51,11 @@ class DatabaseStorage(BaseStorage):
             print(f'{book["name"]} by {book["author"]}, {is_read}')
 
     def mark_book_as_read(self, name: str):
-        self._execute_query("UPDATE books SET read = 1 WHERE name = ?", (name,))
+        cursor = self._execute_query("UPDATE books SET read = 1 WHERE name = ?", (name,))
+        if cursor.rowcount == 0:
+            print(f"No book named '{name}' was found to mark as read.")
 
     def delete_book(self, name):
-        self._execute_query("DELETE FROM books WHERE name = ?", (name,))
+        cursor = self._execute_query("DELETE FROM books WHERE name = ?", (name,))
+        if cursor.rowcount == 0:
+            print(f"No book named '{name}' was found to delete.")

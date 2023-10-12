@@ -1,7 +1,7 @@
-from v2.books.utils.base_storage import BaseStorage
-from v2.books.utils.file_storage import FileStorage
-from v2.books.utils.list_storage import ListStorage
-from v2.books.utils.db_storage import DatabaseStorage
+from v2.books.managers.base_storage import BaseStorage
+from v2.books.managers.file_storage import FileStorage
+from v2.books.managers.list_storage import ListStorage
+from v2.books.managers.db_storage import DatabaseStorage
 
 
 class StorageFactory:
