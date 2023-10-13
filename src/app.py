@@ -28,6 +28,7 @@ from v2.generators import test as test21
 from v2.unpacking import test as test22
 from v2.collections import test as test23
 from v2.datetime import test as test24
+from v2.regex import test as test25
 
 def main():
     params = sys.argv[1:]
@@ -40,7 +41,7 @@ def main():
             f1()
             f2()
     else:
-        test24()
+        test25()
 
 
 main()
