@@ -26,6 +26,7 @@ from v2.filez.main import test as test19
 from v2.books.app import test as test20
 from v2.generators import test as test21
 from v2.unpacking import test as test22
+from v2.collections import test as test23
 
 def main():
     params = sys.argv[1:]
@@ -38,7 +39,7 @@ def main():
             f1()
             f2()
     else:
-        test22()
+        test23()
 
 
 main()
