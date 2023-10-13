@@ -28,7 +28,7 @@ def test():
     print(matches) # Output: ['marc.horse', 'hotmail.com']
 
     price = 'Price: $1,267,896.50'
-    expression = 'Price: \$([0-9,]*\.[0-9]*)'
+    expression = r'Price: \$([0-9,]*\.[0-9]*)'
     matches = re.search(expression, price)
     print(matches.group(0)) # Output: Price: $1,267,896.50 (entire match)
     print(matches.group(1)) # Output: 1,267,896.50 (first thing in brackets)
