@@ -32,6 +32,7 @@ from v2.regex import test as test25
 from v2.logs import test as test26
 from v2.scrap.main import test as test27
 from v2.scrapping_quotes.app import test as test28
+from v2.scrapping_books.app import test as test29
 
 def main():
     params = sys.argv[1:]
@@ -44,7 +45,7 @@ def main():
             f1()
             f2()
     else:
-        test28()
+        test29()
 
 
 main()
