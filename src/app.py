@@ -36,6 +36,7 @@ from v2.scrapping_books.app import test as test29
 from v2.concurrency.threads import test as test30
 from v2.concurrency.processes import test as test31
 from v2.concurrency.non_locked_threads import test as test32
+from v2.concurrency.generators import test as test33
 
 
 def main():
@@ -49,7 +50,7 @@ def main():
             f1()
             f2()
     else:
-        test32()
+        test33()
 
 
 if __name__ == "__main__":
