@@ -33,6 +33,7 @@ from v2.logs import test as test26
 from v2.scrap.main import test as test27
 from v2.scrapping_quotes.app import test as test28
 from v2.scrapping_books.app import test as test29
+from v2.concurrency.threads import test as test30
 
 def main():
     params = sys.argv[1:]
@@ -45,7 +46,7 @@ def main():
             f1()
             f2()
     else:
-        test29()
+        test30()
 
 
 main()
