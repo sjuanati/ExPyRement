@@ -22,9 +22,9 @@ class BookManager:
     URL = "https://books.toscrape.com/"
 
     def __init__(self):
-        self.books = self.retrieve_books()
+        # self.books = self.retrieve_books()
         self.books = self.retrieve_books_mul()
-        # self.books_gen = (book for book in self.books)
+        self.books_gen = (book for book in self.books)
 
     def fetch_url(self, url) -> str:
         response_content = requests.get(url).content

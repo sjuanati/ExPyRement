@@ -1,6 +1,7 @@
 /logs
 logs.txt
 data.db
+venv
 .env
 .DS_Store
 __pycache__/
