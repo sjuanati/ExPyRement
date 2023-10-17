@@ -1,14 +1,12 @@
 import logging
 import requests
+
 from typing import List
+from concurrent.futures import ThreadPoolExecutor
 
 from v2.scrapping_books.pages.books_page import BooksPage
 from v2.scrapping_books.parsers.book import BookParser
-from v2.scrapping_books.menu import (
-    print_best_books,
-    print_cheapest_books,
-    print_best_cheapest_books,
-)
+
 
 logging.basicConfig(
     format="%(asctime)s %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s",
@@ -19,17 +17,24 @@ logging.basicConfig(
 
 logger = logging.getLogger("scraping")
 
+
 class BookManager:
     URL = "https://books.toscrape.com/"
 
     def __init__(self):
         self.books = self.retrieve_books()
-        self.books_gen = (book for book in self.books)
+        self.books = self.retrieve_books_mul()
+        # self.books_gen = (book for book in self.books)
+
+    def fetch_url(self, url) -> str:
+        response_content = requests.get(url).content
+        print(f"reading page {url}")
+        return response_content
 
     def retrieve_books(self) -> List[BookParser]:
+        """retrieve all books sequentially"""
         # Fetch the first page to determine the total number of pages
-        first_page_content = requests.get(self.URL + "catalogue/page-1.html").content
-        print(f"reading page 1")
+        first_page_content = self.fetch_url(self.URL + "catalogue/page-1.html")
         first_page = BooksPage(first_page_content)
         total_pages = first_page.page_count
 
@@ -39,22 +44,46 @@ class BookManager:
         # Fetch books from the remaining pages
         for page in range(2, total_pages + 1):
             url = self.URL + f"catalogue/page-{page}.html"
-            page_content = requests.get(url).content
-            print(f"reading page {page}")
+            page_content = self.fetch_url(url)
             page = BooksPage(page_content)
             _books.extend(page.books)
 
         return _books
 
+    def retrieve_books_mul(self) -> List[BookParser]:
+        """retrieve all books concurrently"""
+        first_page_content = self.fetch_url(self.URL + "catalogue/page-1.html")
+        first_page = BooksPage(first_page_content)
+        total_pages = first_page.page_count
+
+        _books = first_page.books
+        URLs = [
+            self.URL + f"catalogue/page-{i}.html" for i in range(2, total_pages + 1)
+        ]
+
+        with ThreadPoolExecutor() as executor:
+            contents = list(executor.map(self.fetch_url, URLs))
+            for content in contents:
+                page = BooksPage(content)
+                _books.extend(page.books)
+
+        return _books
+
     def look_top_books(self):
-        top_books = [book for book in self.books if book.stars == 5]
+        top_books = [book for book in self.books if book.stars == 5][:20]
         for book in top_books:
             print(book)
 
     def look_cheapest_books(self):
-        cheapest_books = sorted(self.books, key=lambda x: x.price)[:10]
+        cheapest_books = sorted(self.books, key=lambda x: x.price)[:20]
         for book in cheapest_books:
             print(book)
+
+    # show 10 books sorted by starts (desc) and price (asc)
+    # @dev: first sorts by starts, then sorts by price
+    # best_cheapest_books = sorted(books, key=lambda x: (x.stars * -1, x.price))[:10]
+    # for book in best_cheapest_books:
+    #     print(book)
 
     def get_next_available_book(self):
         print(next(self.books_gen))
@@ -85,7 +114,7 @@ class BookManager:
 
 
 def test():
-    logger.info('Loading books list...')
+    logger.info("Loading books list...")
     manager = BookManager()
     manager.menu()
 

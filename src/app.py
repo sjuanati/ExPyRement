@@ -50,7 +50,7 @@ def main():
             f1()
             f2()
     else:
-        test33()
+        test29()
 
 
 if __name__ == "__main__":
