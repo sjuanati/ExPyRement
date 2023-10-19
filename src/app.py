@@ -37,6 +37,7 @@ from v2.concurrency.threads import test as test30
 from v2.concurrency.processes import test as test31
 from v2.concurrency.non_locked_threads import test as test32
 from v2.concurrency.generators import test as test33
+from v2.decorators import test as test34
 
 
 def main():
@@ -50,7 +51,7 @@ def main():
             f1()
             f2()
     else:
-        test33()
+        test34()
 
 
 if __name__ == "__main__":
